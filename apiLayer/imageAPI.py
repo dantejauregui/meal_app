@@ -13,7 +13,7 @@ cors = CORS(app, resources={
 @app.route('/', methods=['POST', 'GET'])
 def index():
     if request.method == 'POST':
-        uploaded_file = request.files
+        uploaded_file = request.files['file']
         print(uploaded_file)
         ingredients_detection = classification(uploaded_file)
         return {
