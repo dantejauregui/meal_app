@@ -13,7 +13,7 @@ cors = CORS(app, resources={
 @app.route('/', methods=['POST', 'GET'])
 def index():
     if request.method == 'POST':
-        uploaded_file = request.files['filepip freeze > requirements.txt']
+        uploaded_file = request.files
         print(uploaded_file)
         ingredients_detection = classification(uploaded_file)
         return {
@@ -26,12 +26,3 @@ def index():
 if __name__ == "__main__":
     app.run(debug=True)
 
-
-
-#2 comandos:
-
-#export FLASK_APP=imageAPI.py
-
-#opcion para q cuando se haga algun cambio se actualice por si solo: export FLASK_DEBUG=1
-
-#flask run
