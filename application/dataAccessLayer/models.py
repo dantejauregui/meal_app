@@ -1,4 +1,4 @@
-from dataAccessLayer import db
+from application import db
 
 
 class UserTable(db.Model):

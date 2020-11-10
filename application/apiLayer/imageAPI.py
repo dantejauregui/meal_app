@@ -1,5 +1,5 @@
-from flask import Flask, render_template, request, redirect, url_for
-from servicesLayer.aiApiCallService import classification
+from flask import Flask, request
+from application.servicesLayer.aiApiCallService import classification
 from flask_cors import CORS
 
 app = Flask(__name__)
@@ -9,6 +9,7 @@ cors = CORS(app, resources={
         "origins": "*"
     }
 })
+
 
 @app.route('/', methods=['POST', 'GET'])
 def index():
@@ -23,6 +24,6 @@ def index():
     else:
         return 'backend works good'
 
+
 if __name__ == "__main__":
     app.run(debug=True)
-
