@@ -2,7 +2,7 @@ beautifulsoup4==4.9.3
 bs4==0.0.1
 certifi==2020.6.20
 chardet==3.0.4
-clarifai-grpc==6.10.0
+clarifai-grpc==6.11.0
 click==7.1.2
 Flask==1.1.2
 Flask-Cors==3.0.9
