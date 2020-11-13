@@ -10,6 +10,6 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///mealappdbsqlite'
 db = SQLAlchemy(app)
 
 
-from application.apiLayer.imageAPI import app
-from application.dataAccessLayer import models
+import application.apiLayer.imageAPI
+import application.dataAccessLayer.models
 

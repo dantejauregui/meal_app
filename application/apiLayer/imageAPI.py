@@ -2,7 +2,7 @@ from flask import Flask, request
 from application.servicesLayer.aiApiCallService import classification
 from flask_cors import CORS
 
-app = Flask(__name__)
+from application import app
 CORS(app)
 cors = CORS(app, resources={
     r"/*": {
@@ -20,10 +20,17 @@ def index():
         return {
             'data': ingredients_detection
         }
-
     else:
         return 'backend works good'
 
+#@app.route('/form', methods=['POST'])
+#def form():
+ # receive data from UI FORM: name, email and favoriteIngredient
+ # so: 1.store data with sql alchemy
+ # 2.execute crawlerService.py
+ # 3. map, structure the data and store in DB in imageAPI.py
+ # 4.return ideas of meals to UI as JSON
 
-if __name__ == "__main__":
-    app.run(debug=True)
+
+#if __name__ == "__main__":
+#    app.run(debug=True)
