@@ -7,7 +7,7 @@ channel = ClarifaiChannel.get_insecure_grpc_channel()
 
 stub = service_pb2_grpc.V2Stub(channel)
 
-metadata = (('authorization', 'Key a2dd94e1c2ec4332b78e796bb00d842b'),)
+metadata = (('authorization', 'Key aead159ddd464d2186101b925e4af4ab'),)
 
 
 def classification(img):
