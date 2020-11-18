@@ -20,6 +20,6 @@ def get_web(search_term):
     print(final_data)
 
 
-resultados = get_web("orange")
-print(resultados)
+#resultados = get_web("orange")
+#print(resultados)
 
