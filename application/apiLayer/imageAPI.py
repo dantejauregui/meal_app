@@ -1,6 +1,6 @@
 from flask import Flask, request
 from application.servicesLayer.aiApiCallService import classification
-from flask_cors import CORS
+from flask_cors import CORS, cross_origin
 from pprint import pprint
 
 from application import app
@@ -17,6 +17,7 @@ cors = CORS(app, resources={
 
 
 @app.route('/', methods=['POST', 'GET'])
+@cross_origin()
 def index():
     if request.method == 'POST':
         uploaded_file = request.files['file']
@@ -30,6 +31,7 @@ def index():
 
 
 @app.route('/form', methods=['POST', 'GET'])
+@cross_origin()
 def form():
     if request.method == 'POST':
         response = request.json
