@@ -1,7 +1,17 @@
 from application import db
+from sqlalchemy.inspection import inspect
 
+class Serializer(object):
+    """Class for serializing SQLAlchemy objects into dicts."""
 
-class UserTable(db.Model):
+    def serialize(self):
+        return {c: getattr(self, c) for c in inspect(self).attrs.keys()}
+
+    @staticmethod
+    def serialize_list(list_obj):
+        return [m.serialize() for m in list_obj]
+
+class UserTable(db.Model, Serializer):
     __tablename__ = 'users'
     __table_args__ = {'extend_existing': True}
     user_session_id = db.Column(db.Integer, primary_key=True)
@@ -13,7 +23,7 @@ class UserTable(db.Model):
     def __repr__(self):
         return f'Author name:{self.name} email:{self.email} favorite_ingredient:{self.favorite_ingredient}'
 
-class MealsAnalysisTable(db.Model):
+class MealsAnalysisTable(db.Model, Serializer):
     __tablename__ = 'meals'
     __table_args__ = {'extend_existing': True}
     meal_suggestion_id = db.Column(db.Integer, primary_key=True)

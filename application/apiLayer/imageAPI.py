@@ -1,6 +1,7 @@
 from flask import Flask, request
 from application.servicesLayer.aiApiCallService import classification
 from flask_cors import CORS
+from pprint import pprint
 
 from application import app
 from application.dataAccessLayer.models import UserTable, MealsAnalysisTable
@@ -50,11 +51,14 @@ def form():
             db.session.commit()
 
         # 4. trying to send the filtered data from my DB to UI:
-        #filtered_meals = MealsAnalysisTable.query.limit(5).all()
-        #print(filtered_meals)
+        filtered_meals = MealsAnalysisTable.query.order_by(MealsAnalysisTable.meal_suggestion_id.desc()).limit(5).all()
+        serialize_meals = MealsAnalysisTable.serialize_list(filtered_meals)
+
+        #using prettyprint:
+        pprint(serialize_meals)
 
         return {
-            'data': generated_meal_ideas
+            'data': serialize_meals
         }
     else:
         return 'FORM backend works good'
