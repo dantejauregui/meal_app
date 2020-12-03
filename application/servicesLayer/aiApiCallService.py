@@ -10,7 +10,7 @@ channel = ClarifaiChannel.get_insecure_grpc_channel()
 stub = service_pb2_grpc.V2Stub(channel)
 key = os.getenv('API_KEY')
 
-metadata = (('authorization', F'Key {key}'),)
+metadata = (('authorization', f'Key {key}'),)
 
 
 def classification(img):
