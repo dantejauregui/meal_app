@@ -1,3 +1,5 @@
+import os
+
 from clarifai_grpc.channel.clarifai_channel import ClarifaiChannel
 from clarifai_grpc.grpc.api import resources_pb2, service_pb2, service_pb2_grpc
 from clarifai_grpc.grpc.api.status import status_pb2, status_code_pb2
@@ -6,8 +8,9 @@ channel = ClarifaiChannel.get_json_channel()
 channel = ClarifaiChannel.get_insecure_grpc_channel()
 
 stub = service_pb2_grpc.V2Stub(channel)
+key = os.getenv('API_KEY')
 
-metadata = (('authorization', 'Key aead159ddd464d2186101b925e4af4ab'),)
+metadata = (('authorization', F'Key {key}'),)
 
 
 def classification(img):
