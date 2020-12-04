@@ -2,9 +2,17 @@ import os
 
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from flask_cors import CORS
 
 app = Flask(__name__)
 #app.secret_key = 'dev'
+
+CORS(app)
+cors = CORS(app, resources={
+    r"/*": {
+        "origins": "*"
+    }
+})
 
 # enter path to the sqlite file here. A new db is created if one does not exist.
 env_name = os.getenv('environment')

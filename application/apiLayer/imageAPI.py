@@ -1,6 +1,5 @@
 from flask import Flask, request
 from application.servicesLayer.aiApiCallService import classification
-from flask_cors import CORS, cross_origin
 from pprint import pprint
 
 from application import app
@@ -8,16 +7,8 @@ from application.dataAccessLayer.models import UserTable, MealsAnalysisTable
 from application import db
 from application.servicesLayer.crawlerService import get_web
 
-CORS(app)
-cors = CORS(app, resources={
-    r"/*": {
-        "origins": "*"
-    }
-})
-
 
 @app.route('/', methods=['POST', 'GET'])
-@cross_origin()
 def index():
     if request.method == 'POST':
         uploaded_file = request.files['file']
@@ -31,7 +22,6 @@ def index():
 
 
 @app.route('/form', methods=['POST', 'GET'])
-@cross_origin()
 def form():
     if request.method == 'POST':
         response = request.json
