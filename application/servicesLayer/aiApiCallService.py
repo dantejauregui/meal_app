@@ -12,7 +12,6 @@ key = os.getenv('API_KEY')
 
 metadata = (('authorization', f'Key {key}'),)
 
-
 def classification(img):
     #with open(img, "rb") as f:
     file_bytes = img.read()

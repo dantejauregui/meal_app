@@ -9,7 +9,8 @@ def get_web(search_term):
     receipts = htmlcode.find_all('h3', class_='fixed-recipe-card__h3')
     final_data = []
 
-    for r in receipts:
+    #just slice 5 receipts in the FOR loop, in order to avoid a lot of database rows
+    for r in receipts[:5]:
         r_name = r.find('span', class_='fixed-recipe-card__title-link')
         r_url = r.find('a')['href']
         if None in (r_name, r_url):
