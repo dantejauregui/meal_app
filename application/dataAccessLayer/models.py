@@ -34,7 +34,13 @@ class MealsAnalysisTable(db.Model, Serializer):
     def __repr__(self):
         return f'Author suggested_meal_title:{self.suggested_meal_title} suggested_meal_url:{self.suggested_meal_url}'
 
-# Activate this code in order to create the Database:
-#if __name__ == '__main__':
+# Uncomment and Run this code locally in order to create the Database (before first deployment):
 #    db.create_all()
 #    db.session.commit()
+
+
+#And in order to create the DB inside Heroku with Heroku console (after deployment is done):
+#python
+#from application import db
+#db.create_all()
+#db.session.commit()
