@@ -7,7 +7,7 @@ from flask_cors import CORS
 app = Flask(__name__)
 #app.secret_key = 'dev'
 
-CORS(app)
+CORS(app, automatic_options=True)
 cors = CORS(app, resources={
     r"/*": {
         "origins": "*"
